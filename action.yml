@@ -1,0 +1,27 @@
+name: "Verilator Lint"
+
+description: "Run Verilator lint and generate JSON report"
+
+inputs:
+  sv_files:
+    description: "List of SystemVerilog files"
+    required: true
+
+  severity:
+    description: "Lint severity level"
+    required: false
+    default: "warning"
+
+outputs:
+  result:
+    description: "JSON lint results"
+
+runs:
+  using: "composite"
+
+  steps:
+    - shell: bash
+      run: |
+        python ${{ github.action_path }}/entrypoint.py \
+          "${{ inputs.sv_files }}" \
+          "${{ inputs.severity }}"
