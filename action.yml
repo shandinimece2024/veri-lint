@@ -22,6 +22,6 @@ runs:
   steps:
     - shell: bash
       run: |
-        python ${{ github.action_path }}/entrypoint.py \
+        python ${{ github.action_path }}/piscript.py \
           "${{ inputs.sv_files }}" \
           "${{ inputs.severity }}"
